@@ -19,7 +19,6 @@ export default function Navbar({
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          {/* Links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">Home</Link>
@@ -28,16 +27,6 @@ export default function Navbar({
               <Link className="nav-link" to="/about">{abouttext}</Link>
             </li>
           </ul>
-
-          {/* Color Buttons */}
-          <div className="d-flex">
-            <div className="bg-primary rounded mx-2" onClick={() => toggleMode('primary')} style={{ height: '30px', width: '30px', cursor: 'pointer' }}></div>
-            <div className="bg-danger rounded mx-2" onClick={() => toggleMode('danger')} style={{ height: '30px', width: '30px', cursor: 'pointer' }}></div>
-            <div className="bg-success rounded mx-2" onClick={() => toggleMode('success')} style={{ height: '30px', width: '30px', cursor: 'pointer' }}></div>
-            <div className="bg-warning rounded mx-2" onClick={() => toggleMode('warning')} style={{ height: '30px', width: '30px', cursor: 'pointer' }}></div>
-          </div>
-
-          {/* Dark Mode Switch */}
           <div className={`form-check form-switch text-${mode === 'light' ? 'dark' : 'light'}`}>
             <input className="form-check-input" onClick={() => toggleMode(null)} type="checkbox" id="flexSwitchCheckDefault" />
             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Toggle Mode</label>

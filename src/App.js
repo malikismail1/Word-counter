@@ -9,10 +9,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
-  const [mode, setMode] = useState('light'); // light or dark
+  const [mode, setMode] = useState('light'); 
   const [alert, setAlert] = useState(null);
 
-  // Alert show function
   const showAlert = (message, type) => {
     setAlert({ msg: message, type: type });
     setTimeout(() => {
@@ -20,23 +19,8 @@ function App() {
     }, 1500);
   };
 
-  // Remove previous background color classes
-  const removeBodyclasses = () => {
-    document.body.classList.remove('bg-light');
-    document.body.classList.remove('bg-dark');
-    document.body.classList.remove('bg-danger');
-    document.body.classList.remove('bg-success');
-    document.body.classList.remove('bg-warning');
-    document.body.classList.remove('bg-primary');
-  };
 
-  // Toggle theme
-  const toggleMode = (cls) => {
-    removeBodyclasses();
-    if (cls) {
-      document.body.classList.add('bg-' + cls);
-    }
-
+  const toggleMode = () => {
     if (mode === 'light') {
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
@@ -50,25 +34,13 @@ function App() {
 
   return (
     <>
-      <Navbar
-        title="TextUtils"
-        abouttext="About"
-        mode={mode}
-        toggleMode={toggleMode}
-      />
-      <Alert alert={alert} />
+      <Navbar title="TextUtils"  abouttext="About" mode={mode} toggleMode={toggleMode}/>
+      <Alert alert={alert} mode={mode} />
       <div className="container my-3">
         <Routes>
           <Route
-            path="/"
-            element={
-              <TextForm
-                showAlert={showAlert}
-                heading="Try TextUtils - Word counter, Character counter, Remove Extra Spaces"
-                mode={mode}
-              />
-            }
-          />
+           path="/" element={
+          <TextForm showAlert={showAlert} heading="Try TextUtils - Word counter, Character counter, Remove Text"mode={mode}/>} />
           <Route path="/about" element={<About mode={mode} />} />
         </Routes>
       </div>
